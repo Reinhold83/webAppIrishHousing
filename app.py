@@ -115,7 +115,7 @@ class Form(FlaskForm):
     submit = SubmitField('Submit')                        
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def main():
     form = Form()
 
     if request.method == 'POST':
