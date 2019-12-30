@@ -10,20 +10,37 @@
       <div style="height: 110px; background-color: #d5fcf3;">
   <h1>Irish Housing Stock Survey</h1>
   <h3 style = 'text-align:center; color=#ff7900; font-style:italic;'>
-    Helping to portrait the real picture of the Irish Housing Market.</h3>
+    Helping to build the real picture of the Irish Housing Market.</h3>
 </div>
   </head>
-  <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Home</a>
-      <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="#">Analyses </a>
-      <a class="nav-item nav-link" href="#">Contact us</a>
+    <div>    
+    <strong><nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <ul class='navbar-nav'>
+            <li><a class="nav-item nav-link" href="{{ url_for('index')}}">Home</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('About')}}">About</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('Contact')}}">Contact us</a></li>
+        </ul>
+    </nav></strong>
     </div>
     
-</nav>
-  </body>
+  <body>
+
+<body>
+<h2 class="col-md-6 col-md-offset-3 text-center" style='font-italic'>
+<center>
+Introduction </h2> </centre>
+<div class="col-md-6 col-md-offset-3 text-center" style = "margin: 20px" 'justify'>
+    The housing market in Ireland has been facing very distinct curves in the past two decades along with a big recession that reached its peak in 2008 to a descending curve since, by 2013 the housing market started to reverse to a positive growth, although this positive variance has not been strong enough to solve the crisis as the analyses has shown, yet this is not a real portrait of the issue, as a majority of the tenants are not officially registered in The Private Tenancies Board(PRTB). From the analyses of the Census of 2016 the CSO has concluded that there are 2.48 people per private property in Dublin City, although news as “Fifteen people sharing one room in house with 70 tenants” in Dublin City from the Independent.ie in 2017 are actually not as alarming.
+As it is a market the analyses and visualization will be divided between supply and demand using Python 3 with Jupyter Notebook, pandas, numpy, Bokeh, Matplotlib, Seaborm among others to find insights to support a solution to the issue.
+</div>
+<strong>
+<div class="col-md-6 col-md-offset-3 text-center" >
+<div class="font-italic" style = "margin: 20px" font-size:'13px';> 
+If you'd like to read the fulll analyses, please download from the link below:
+</div>
+</div>
+</strong>
+    </body>
+
+  
 </html>

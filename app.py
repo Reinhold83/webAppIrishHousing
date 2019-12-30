@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, jsonify, url_for, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, url_for #jsonify, 
 from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField, IntegerField, StringField
 from wtforms.validators import DataRequired, Email
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
-Bootstrap(app)
+#Bootstrap(app)
 app.config['SECRET_KEY'] = 'secret'
 
 class Form(FlaskForm):
@@ -63,7 +63,7 @@ class Form(FlaskForm):
                                 ('KILKENNY', 'Kilkenny'),
                                 ('LAOIS', 'Laois'),
                                 ('LEITRIM', 'Letrim'),
-                                ('LIMERICK', 'Limeric'),
+                                ('LIMERICK', 'Limerick'),
                                 ('LONGFORD', 'Longford'),
                                 ('LOUTH', 'Louth'),
                                 ('MAYO','Mayo'),
@@ -73,7 +73,7 @@ class Form(FlaskForm):
                                 ('ROSCOMMON', 'Roscommon'),
                                 ('SLIGO', 'Sligo'),
                                 ('TIPPERARY', 'Tipperary'),
-                                ('WATERFORD', 'Wateford'),
+                                ('WATERFORD', 'Waterford'),
                                 ('WESTMEATH', 'Westmeath'),
                                 ('WEXFORD', 'Wexford'),
                                 ('WICKLOW', 'Wicklow')
@@ -93,7 +93,7 @@ class Form(FlaskForm):
                                 ('Owner with mortgage','Owner with mortgage'),
                                 ('Family Property', 'Family Property'),
                                 ('Rental','Rental'),
-                                ('HouseShared', 'House/Apt rental shared'),
+                                ('RentalShared', 'House/Apt rental shared'),
                                 ('RoomShared', 'Room rental shared'),
                                 ('Social House','Social House'),
                                 ('HAP/RAS','HAP/RAS'),
@@ -118,34 +118,30 @@ class Form(FlaskForm):
 def index():
     form = Form()
 
-    #if request.method == 'POST':
-    #    return 'Thank you for your help.'
- 
-    #elif request.method == 'GET':
-    #    return render_template('index1.html', form=form)
-
-    if form.validate_on_submit():
-        print('Success! Thanks for your colaboration!')
-        flash(u'Thank you for your collaboration!', 'success')
-        if not form.validate_on_submit():
-            print('Something went wrong!')
-            flash(u'Something went wrong!', 'error')
-            return redirect(url_for('index'))
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            flash(u'Something went wrong!', 'success')
+            
+        else:
+            flash(u'Thank you for your collaboration!', 'error')
         return redirect(url_for('index'))
-    #submission_successful = True #or False. you can determine this.
-    return render_template('index1.html', form=form) #submission_successful=submission_successful)
+    return render_template('index.html', form=form)
 
 @app.route('/About', methods=['GET','POST'])
 def About():
     return render_template('About.html')
 
-@app.route('/Analyses', methods=['POST'])
-def Analyses():
-    return render_template('Analyses.html')
-
-@app.route('/Contact us', methods=['POST'])
+@app.route('/Contact', methods=['GET','POST'])
 def Contact():
-    return render_template('ContactUS.html')
+    return render_template('Contact.html')
+
+from flask import send_file
+
+@app.route('/download')
+def downloadFile ():
+    #For windows you need to use drive name [ex: F:/Example.pdf]
+    path = "\\4thSemestre\\AssignmentBreakdown\Paper\HouseMarket_09_12.docx";
+    return send_file(path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run()
