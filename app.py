@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, flash, redirect, url_for #jsonify, 
+from flask import Flask, render_template, request, jsonify, url_for, flash, redirect
 from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField, IntegerField, StringField
 from wtforms.validators import DataRequired, Email
-from flask_bootstrap import Bootstrap
+#from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 #Bootstrap(app)
@@ -63,7 +63,7 @@ class Form(FlaskForm):
                                 ('KILKENNY', 'Kilkenny'),
                                 ('LAOIS', 'Laois'),
                                 ('LEITRIM', 'Letrim'),
-                                ('LIMERICK', 'Limerick'),
+                                ('LIMERICK', 'Limeric'),
                                 ('LONGFORD', 'Longford'),
                                 ('LOUTH', 'Louth'),
                                 ('MAYO','Mayo'),
@@ -73,7 +73,7 @@ class Form(FlaskForm):
                                 ('ROSCOMMON', 'Roscommon'),
                                 ('SLIGO', 'Sligo'),
                                 ('TIPPERARY', 'Tipperary'),
-                                ('WATERFORD', 'Waterford'),
+                                ('WATERFORD', 'Wateford'),
                                 ('WESTMEATH', 'Westmeath'),
                                 ('WEXFORD', 'Wexford'),
                                 ('WICKLOW', 'Wicklow')
@@ -93,7 +93,7 @@ class Form(FlaskForm):
                                 ('Owner with mortgage','Owner with mortgage'),
                                 ('Family Property', 'Family Property'),
                                 ('Rental','Rental'),
-                                ('RentalShared', 'House/Apt rental shared'),
+                                ('HouseShared', 'House/Apt rental shared'),
                                 ('RoomShared', 'Room rental shared'),
                                 ('Social House','Social House'),
                                 ('HAP/RAS','HAP/RAS'),
