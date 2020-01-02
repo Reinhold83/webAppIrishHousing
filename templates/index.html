@@ -37,7 +37,9 @@
         {{ form.hidden_tag() }}
         <fileset>
         
-        <input type="email" name=form.Email placeholder="Enter your email *">
+        <label for="Email" style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" >Email address</label>
+        <input type="email" style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" 
+        name=form.Email placeholder="Enter your email *" required>
         <div style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field"> {{ form.sex.label }}  {{ form.sex() }}  </div>
         
         <div style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field"> {{ form.age.label }}  {{ form.age() }}  </div>
@@ -46,17 +48,16 @@
         <div style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field"> {{ form.Property.label }}  {{ form.Property() }}  </div>
         <div style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field"> {{ form.PropertyStatus.label }}  {{ form.PropertyStatus() }}  </div>
         <div style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field"> {{ form.Rooms.label }}  {{ form.Rooms() }}  </div>
-        <div style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" placeholder='Please enter value *'> 
-        {{ form.AmountPaid.label }}  {{ form.AmountPaid() }}  </div> 
-        <div style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" placeholder='Enter the number of people living in the property.'>
-        {{ form.People.label}} {{ form.People() }} </div>
-        <div style = font-size:17px; font-weight:bold; margin-left:100px; class="form-field"> {{ form.submit()}}  </div>
+        <label for="AmountPaid" style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" >Value rent/mortgage in €</label>
+        <input type="number" style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" 
+        name=form.Email placeholder="Pleaser enter a value *" required>
         
-        
-
-        
-        
-        
+        <label for="People" style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" >People per household</label>
+        <input type="number" style = font-size:18px; font-weight:bold; margin-left:100px; class="form-field" 
+        name=form.Email placeholder="Enter the number of people living in the property *" required>
+        <center>
+          <button type="submit" class="btn btn-success">Submit</button> </center>
+      
         
         {% with messages = get_flashed_messages(with_categories=false) %}
             {% if messages %}
@@ -76,10 +77,10 @@
         {% endfor %}
             {% endif %}
         {% endwith %}
-
-        
+      </fieldset>
+     </form>   
     </div>
     </center>
-    </fieldset>
-    </form>
+    
+   
 </html>

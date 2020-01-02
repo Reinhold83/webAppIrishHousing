@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Email
 
 app = Flask(__name__)
 #Bootstrap(app)
-app.config['SECRET_KEY'] = 'secret'
+app.config['SECRET_KEY'] = 'secret1'
 
 class Form(FlaskForm):
     """Please lets portrait the real picture together."""
@@ -115,7 +115,7 @@ class Form(FlaskForm):
     submit = SubmitField('Submit')                        
 
 @app.route('/', methods=['GET', 'POST'])
-def main():
+def index():
     form = Form()
 
     if request.method == 'POST':
@@ -125,7 +125,7 @@ def main():
         else:
             flash(u'Thank you for your collaboration!', 'error')
         return redirect(url_for('index'))
-    return render_template('index.html', form=form)
+    return render_template('index1.html', form=form)
 
 @app.route('/About', methods=['GET','POST'])
 def About():
