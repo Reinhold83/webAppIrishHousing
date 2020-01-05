@@ -3,10 +3,10 @@ from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField, IntegerField, StringField
 from wtforms.validators import DataRequired, Email
 from flask_bootstrap import Bootstrap
-from .contact import ContForm
-from .survey import Form
+from contact import ContForm
+from survey import Form
 from flask import send_file
-from flask_mail import Mail
+from flask_mail import Mail, Message
 
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = 'irishousingproject@gmail.com'
-app.config["MAIL_PASSWORD"] = 'irish_housing2020'
+app.config["MAIL_PASSWORD"] = 'irish_housingProject19'
  
 mail.init_app(app)
 
@@ -48,7 +48,13 @@ def Contact():
             flash('All fields are required.')
             return render_template('Contact.html', form=form)
         else:
-            flash
+            msg = Message('Hello',
+            sender=('Myself', 'raphaelreinhold@hotmail.com'),
+            recipients=['irishousingproject@gmail.com'])
+            msg.body = "testing"
+            mail.send(msg)
+
+            flash('not sure what to write here just yet')
             return render_template('Contact.html', success=True)
  
     elif request.method == 'GET':
