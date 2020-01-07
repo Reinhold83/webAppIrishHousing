@@ -52,6 +52,10 @@ def index():
 def About():
     return render_template('About1.html')
 
+@app.route('/Design', methods=['GET','POST'])
+def Design():
+    return render_template('Design.html')
+
 @app.route('/Contact', methods=['GET','POST'])
 def Contact():
     form = ContForm()
@@ -73,6 +77,19 @@ def Contact():
         return render_template('Contact.html', form=form)
 
     
+@app.route('/file-downloads/')
+def file_downloads():
+	try:
+		return render_template('downloads.html')
+	except Exception as e:
+		return str(e)
+
+@app.route('/return-files/')
+def return_files_tut():
+	try:
+		return send_file('C:/Users/rapha/Documents/College/webappProject/webAppIrishHousing/static/toDownload/IrishHousingProject.pdf', attachment_filename='IrishHousingProject.pdf')
+	except Exception as e:
+		return str(e)
 
 
 if __name__ == '__main__':
