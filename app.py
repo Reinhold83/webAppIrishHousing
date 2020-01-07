@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify, url_for, flash, redirect
 from flask_wtf import FlaskForm
+from wtforms import Form, TextField, TextAreaField, SubmitField, StringField
+from wtforms.validators import DataRequired, Email
 from wtforms import SelectField, SubmitField, IntegerField, StringField
 from wtforms.validators import DataRequired, Email
 from flask_bootstrap import Bootstrap
-from contact import ContForm
+#from contact import ContForm
 from survey import Form
 from flask import send_file
 from flask_mail import Mail, Message
@@ -22,6 +24,16 @@ app.config["MAIL_USERNAME"] = 'irishousingproject@gmail.com'
 app.config["MAIL_PASSWORD"] = 'irish_housingProject19'
  
 mail.init_app(app)
+
+
+class ContForm(Form):
+    name = TextField("Name", [DataRequired()])
+    email = StringField('Email address', [
+        Email(message='Not a valid email address.'),
+        DataRequired()])
+    subject = TextField("Subject", [DataRequired()])
+    message = TextAreaField("Message", [DataRequired()])
+    submit = SubmitField("Send")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -61,11 +73,7 @@ def Contact():
         return render_template('Contact.html', form=form)
 
     
-@app.route('/download')
-def downloadFile ():
-    #For windows you need to use drive name [ex: F:/Example.pdf]
-    path = "\\4thSemestre\\AssignmentBreakdown\Paper\HouseMarket_09_12.docx";
-    return send_file(path, as_attachment=True)
+
 
 if __name__ == '__main__':
     app.run()
