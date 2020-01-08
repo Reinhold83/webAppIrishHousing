@@ -85,11 +85,18 @@ def file_downloads():
 		return str(e)
 
 @app.route('/return-files/')
-def return_files_tut():
+def return_files():
 	try:
 		return send_file('C:/Users/rapha/Documents/College/webappProject/webAppIrishHousing/static/toDownload/IrishHousingProject.pdf', attachment_filename='IrishHousingProject.pdf')
 	except Exception as e:
 		return str(e)
+
+@app.route('/return-files1/')
+def return_files1():
+    try:
+        return redirect('https://github.com/Reinhold83/webAppIrishHousing.git')
+    except Exception as e:
+		    return str(e)
 
 
 if __name__ == '__main__':
